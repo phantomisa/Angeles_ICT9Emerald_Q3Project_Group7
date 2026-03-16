@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Fare Matrix</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="styles.css" rel="stylesheet">
+
+    <style>
+    	.nav-link{
+    	            color: #9fbec4;
+    	        }
+    	        .nav-link:hover {
+    	            color: #bf1134;;
+    	        }
+    	        #register{
+    	            background-color:#9fbec4;
+    	            color: #2f596e;
+    	        }
+    	        #register:hover {
+    	            color: white;
+    	            background-color: #bf1134;
+    	            border-color: #bf1134;
+    	        }
+    	body{
+    		background: url(background.png);
+    		background-size: cover;
+            height: 700px;
+    		font-family: sans-serif;
+    		color: #1c475c;
+    		overflow-x:hidden;
+    		overflow-y: scroll;
+    	}
+    	#form-container{
+    		width: 70%;
+    		justify-self: right;
+    		margin-top: 5%;
+    		margin-bottom: 5%;
+    		margin-right: -110px;
+    		padding: 2%;
+    		padding-left: 20px;
+    		padding-right: 150px;
+    		padding-bottom: 1px;
+    		background-color: #9fbec4; 
+    		border-radius: 10px;
+    		text-align: center;
+    		box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 5px 3px;
+    	}
+    	#form{
+    		width: 70%;
+    		justify-self: center;
+    	}
+    	.end-footer {
+    	                background-color: #102129;
+    	                color: #bf1134;
+    	                text-align: center;
+    	                padding: 30px 20px !important;
+    	                width: 100%;
+    	                display: block;
+    	                flex-shrink: 0;
+    	                font-family: sans-serif;
+    	                box-shadow: rgba(0, 0, 0, 0.3) 5px 3px 5px 3px;
+    	            }
+    	            .copyright-footer {
+    	                position: fixed;
+    	                bottom: 30px;
+    	                left: 50%;
+    	                transform: translateX(-50%);
+    	                background: rgba(255, 255, 255, 0.95);
+    	                padding: 15px 30px !important;
+    	                border-radius: 50px;
+    	                display: flex;
+    	                gap: 10px;
+    	                box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 3px 0px;
+    	                backdrop-filter: blur(10px);
+    	                z-index: 10000;
+    	                transition: all 0.3s ease-in-out;
+    	                align-items: center;
+    	                background-color: #bad6db;
+    	            }
+
+    	            .hidden {
+    	                opacity: 0;
+    	                transform: translate(-50%, 40px);
+    	                pointer-events: none;
+    	            }
+
+    	            .nav-btn {
+    	                padding: 10px 15px !important;
+    	                background-color: #880e4f;
+    	                color: white;
+    	                text-decoration: none;
+    	                border-radius: 30px;
+    	                font-weight: bold;
+    	                transition: 0.3s;
+    	                font-family: sans-serif;
+    	                border: none;
+    	                cursor: pointer;
+    	                appearance: none;
+    	                -webkit-appearance: none;
+    	                text-align: center;
+    	                min-width: 90px;
+    	            }
+
+    	            .nav-btn:hover {
+    	                background-color: #c2185b;
+    	                transform: scale(1.05);
+    	            }
+
+    	            .copyright-text {
+    	                color: #bf1134;
+    	                font-family: sans-serif;
+    	                font-size: 15px;
+    	                font-weight: bold;
+    	                white-space: nowrap;
+    	            }
+
+    </style>
+
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg" style="background-color: #102129; padding: 1%; box-shadow: rgba(0, 0, 0, 0.3) 5px 3px 5px 3px;">
+	            <div class="container-fluid">
+	                <a class="navbar-brand" href="index.html"><img src="Logo.png" alt="logo" height="50px" style="color: #9fbec4;"></a>
+
+	                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+	                    <span class="navbar-toggler-icon"></span>
+	                </button>
+
+	                <div class="collapse navbar-collapse" id="mynavbar">
+	                    <ul class="navbar-nav me-auto">
+	                        <li class="nav-item"><a class="nav-link" href="schedule.html">Schedule</a></li>
+	                        <li class="nav-item"><a class="nav-link" href="matrix.html" style="margin-left: 7px;">Fare Matrix</a></li>
+	                        <li class="nav-item"><a class="nav-link" href="help.html" style="margin-left: 7px;">Help</a></li>
+
+	                    </ul>
+
+	                    <form class="d-flex">
+	                        <button onclick="location.href='register.html'" class="btn" type="button" style="font-weight: bold;" id="register">Create Account</button>
+	                    </form>
+	                </div>
+	            </div>
+	    </nav>
+
+	<div id="form-container">
+		<h1 style="font-size: 40px; margin-bottom: 50px; font-weight: bold; color: #BF1134;">FARE MATRIX</h>
+		<br>
+		<p style="font-size: 18px; font-weight: normal; margin-bottom: 40px; color:#1c475c;">Don't know where or when to go? Check the schedule <a href="page2.html">here!</a> </p>
+
+		<div id="form">
+			<form>
+			<div style="display: flex; flex-direction: row; gap: 100px;">
+				<label for="location" style="font-size: 30px; color:#1c475c;">LOCATION</label>
+                    <select name="location" class="form-control" id="location">
+                        <option default value="n/a1" >Select location</option>
+                        <option value="1">North Avenue</option>
+                        <option value="2">Quezon Avenue</option>
+                        <option value="3">Kamuning</option>
+                        <option value="4">Araneta Center-Cubao</option>
+                        <option value="5">Santolan-Annapolis</option>
+                        <option value="6">Ortigas</option>
+                        <option value="7">Shaw Boulevard</option>
+                        <option value="8">Boni</option>
+                        <option value="9">Guadalupe</option>
+                        <option value="10">Buendia</option>
+                        <option value="11"> Alaya</option>
+                        <option value="12">Magallanes</option>
+                        <option value="13">Taft Avenue</option>
+                        </select>
+			</div>
+
+			<p style="justify-self: center; margin-top: -2%; margin-bottom: 4.5%; font-weight: normal; color:#1c475c;">________________________</p>
+
+			<div style="display: flex; flex-direction: row; gap: 53.5px; margin-bottom: 8%;">
+				<label for="destination" style="font-size: 30px; color:#1c475c;">DESTINATION</label>
+                    <select name="destination" class="form-control" id="destination">
+                        <option default value="n/a2" >Select destination</option>
+                       <option value="1">North Avenue</option>
+                        <option value="2">Quezon Avenue</option>
+                        <option value="3">Kamuning</option>
+                        <option value="4">Araneta Center-Cubao</option>
+                        <option value="5">Santolan-Annapolis</option>
+                        <option value="6">Ortigas</option>
+                        <option value="7">Shaw Boulevard</option>
+                        <option value="8">Boni</option>
+                        <option value="9">Guadalupe</option>
+                        <option value="10">Buendia</option>
+                        <option value="11"> Alaya</option>
+                        <option value="12">Magallanes</option>
+                        <option value="13">Taft Avenue</option>
+                        </select>
+			</div>
+
+			<div style="font-size: 18px">
+				<h3 style="font-size: 30px; font-weight: bold; color:#1c475c;">DISCOUNT ELIGIBILITY (50% OFF)</h3>
+				<div style="display: flex; justify-self: center; font-weight: normal; margin-left: -40px; margin-right: -40px; color:#1c475c;" id="discount"> 
+					<input class="form-check" type="radio" name="discount" id="pwd"value="pwd" >
+			    	<label class="form-check-label" for="pwd" style="margin-left: 7px">Person with Disabilities (PwD)</label>
+
+			    	<input class="form-check" type="radio" name="discount" id="senior"value="senior" style="margin-left: 20px">
+			    	<label class="form-check-label" for="senior" style="margin-left: 7px">Senior Citizen</label>
+
+			    	<input class="form-check" type="radio" name="discount" id="student" value="student" style="margin-left: 20px">
+			    	<label class="form-check-label" for="student" style="margin-left: 7px">Student</label>
+
+			    	<input class="form-check" type="radio" name="discount" id="n/a" value="n/a" style="margin-left: 20px">
+			    	<label class="form-check-label" for="n/a" style="margin-left: 7px">None of the above</label>
+			    </div>
+			</div>
+			</form>
+		</div>
+
+			<div>
+				<button onclick="calculate()" class="form-control" style="justify-self: center; margin: 3%; width: 30%; font-size: 25px; font-weight: bold; background-color: #bf1134; border-color: #800616; color: white;">CALCULATE</button>
+			</div>
+
+			<div id="result"></div>
+	</div>
+
+	 <div id="copyright" class="copyright-footer">
+        <p class="copyright-text mb-0">© 2026 MRT Line 3 (North Avenue - Taft Avenue). All Rights Reserved.</p>
+    </div>
+
+	<footer id="bottom" class="end-footer">
+        <p><strong>By Group - 7: Chan, Rivera, and Santos, L.</strong> | 9-Emerald</p>
+    </footer>
+
+	<script>
+		const pill = document.getElementById('copyright');
+		const footer = document.getElementById('bottom');
+
+		const observer = new IntersectionObserver((entries) => {
+		    entries.forEach(entry => {
+		        if (entry.isIntersecting) {
+		            pill.classList.add('hidden');
+		        } else {
+		            pill.classList.remove('hidden');
+		        }
+		    });
+		}, { threshold: 0.01 });
+
+		observer.observe(footer);
+
+		function calculate(){
+			let location = document.getElementById("location").value;
+			let destination = document.getElementById("destination").value;
+
+			let discount = null;
+				if (document.getElementById("pwd").checked) discount = "pwd";
+				else if (document.getElementById("senior").checked) discount = "senior";
+				else if (document.getElementById("student").checked) discount = "student";
+				else if (document.getElementById("n/a").checked) discount = "n/a";
+
+			if (location === destination) {
+				alert("You're already there!");
+				return;
+			}
+
+			if (location === "n/a1" || destination === "n/a2"){
+				alert("Fill out all fields!");
+				return;
+			}
+
+			let start = parseInt(location);
+			let end   = parseInt(destination);
+
+			let distance = Math.abs(start - end);
+
+			let regularfare;
+			    if (distance <= 3) {
+			        regularfare = 13;
+			    } else if (distance <= 6) {
+			        regularfare = 16;
+			    } else if (distance <= 9) {
+			        regularfare = 20;
+			    } else if (distance <= 12) {
+			        regularfare = 24;
+			    } else {
+			        regularfare = 28;
+			    }
+
+			let finalfare = regularfare;
+
+				if (discount === "pwd" || discount === "senior" || discount === "student") {
+				    finalfare = Math.round(regularfare * 0.5);
+				}
+
+			document.getElementById("result").innerHTML = "Your fare will cost " + finalfare + " pesos."
+
+		}
+	</script>
+
+</body>
+</html>
